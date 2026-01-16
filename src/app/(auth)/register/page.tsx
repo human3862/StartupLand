@@ -4,7 +4,7 @@ import { Input } from '@/components/UI/Input'
 import { useActionState } from 'react'
 import { Button } from '@/components/UI/Button'
 import { ActionState, registerAction } from '@/actions/auth'
-
+export const dynamic = 'force-dynamic'
 export default function RegisterPage() {
   const [state, formAction, isPending] = useActionState<ActionState, FormData>(registerAction, null)
   return (

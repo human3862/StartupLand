@@ -4,7 +4,7 @@ import { RenderBlocks } from '@/components/blocks/RenderBlocks'
 import config from '@payload-config'
 import { getPayload } from 'payload'
 import { notFound } from 'next/navigation'
-
+export const dynamic = 'force-dynamic'
 export default async function Page() {
   const payload = await getPayload({ config })
 

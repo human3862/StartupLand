@@ -4,7 +4,7 @@ import { useActionState } from 'react'
 import { loginAction } from '@/actions/auth'
 import { Input } from '@/components/UI/Input'
 import { Button } from '@/components/UI/Button'
-
+export const dynamic = 'force-dynamic'
 export default function LoginPage() {
   const [state, formAction, isPending] = useActionState(loginAction, null)
   return (
