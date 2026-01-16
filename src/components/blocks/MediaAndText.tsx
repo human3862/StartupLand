@@ -21,7 +21,7 @@ export const MediaAndText: React.FC<MediaAndTextData> = ({
         <div
           className={`order-last flex flex-col items-start justify-center gap-[clamp(10px,4vw,32px)] ${isRight ? 'lg:order-first' : 'lg:order-last'}`}
         >
-          <h2 className="text-[clamp(28px,4vw,60px)] leading-tight font-bold">{title}</h2>
+          <h2 className="text-[clamp(28px,4vw,61px)] leading-tight font-bold">{title}</h2>
           <p className="text-[clamp(12px,4vw,18px)] leading-relaxed">{description}</p>
 
           <div className="flex gap-8">
