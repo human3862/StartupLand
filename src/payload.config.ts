@@ -11,7 +11,6 @@ import { Pages } from './collections/Pages'
 import { Header } from './collections/Header'
 import { Footer } from './collections/Footer'
 import { Subscribers } from './collections/Subscribers'
-import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -36,12 +35,5 @@ export default buildConfig({
     },
   }),
   sharp,
-  plugins: [
-    vercelBlobStorage({
-      collections: {
-        media: true, // Название вашей коллекции с картинками
-      },
-      token: process.env.BLOB_READ_WRITE_TOKEN,
-    }),
-  ],
+  plugins: [],
 })
