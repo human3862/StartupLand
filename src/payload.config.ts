@@ -39,18 +39,19 @@ export default buildConfig({
   plugins: [
     s3Storage({
       collections: {
-        media: true, // slug твоей коллекции
+        media: true,
       },
-      bucket: 'media', // имя бакета, который ты создал в Supabase
+      bucket: process.env.S3_BUCKET!,
       config: {
-        endpoint: process.env.SUPABASE_S3_ENDPOINT!, // ВАЖНО: берется в настройках Supabase
-        region: 'us-east-1', // Для Supabase можно писать любое, обычно us-east-1
+        endpoint: process.env.S3_ENDPOINT!,
+        region: 'auto',
         credentials: {
-          accessKeyId: process.env.SUPABASE_ACCESS_KEY_ID!,
-          secretAccessKey: process.env.SUPABASE_SECRET_ACCESS_KEY!,
+          accessKeyId: process.env.S3_ACCESS_KEY!,
+          secretAccessKey: process.env.S3_SECRET_KEY!,
         },
         forcePathStyle: true,
       },
+      clientUploads: true,
     }),
   ],
 })
