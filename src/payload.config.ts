@@ -11,7 +11,7 @@ import { Pages } from './collections/Pages'
 import { Header } from './collections/Header'
 import { Footer } from './collections/Footer'
 import { Subscribers } from './collections/Subscribers'
-import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
+import { s3Storage } from '@payloadcms/storage-s3'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -37,13 +37,20 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
-    vercelBlobStorage({
-      clientUploads: true,
-      enabled: true,
+    s3Storage({
       collections: {
-        media: true,
+        media: true, // slug твоей коллекции
       },
-      token: process.env.BLOB_READ_WRITE_TOKEN,
+      bucket: 'media', // имя бакета, который ты создал в Supabase
+      config: {
+        endpoint: process.env.SUPABASE_S3_ENDPOINT!, // ВАЖНО: берется в настройках Supabase
+        region: 'us-east-1', // Для Supabase можно писать любое, обычно us-east-1
+        credentials: {
+          accessKeyId: process.env.SUPABASE_ACCESS_KEY_ID!,
+          secretAccessKey: process.env.SUPABASE_SECRET_ACCESS_KEY!,
+        },
+        forcePathStyle: true,
+      },
     }),
   ],
 })
