@@ -1,67 +1,93 @@
-# Payload Blank Template
+# 🚀 StartupLand: Fullstack Landing Page
 
-This template comes configured with the bare minimum to get started on anything you need.
+Краткое описание проекта: современный лэндинг с полноценной панелью управления контентом. Сверстано по макету из Figma с упором на производительность и SEO.
 
-## Quick start
+[Посмотреть демо](https://support-app-rho.vercel.app/)
 
-This template can be deployed directly from our Cloud hosting and it will setup MongoDB and cloud S3 object storage for media.
+---
 
-## Quick Start - local setup
+## 📸 Скриншоты и Демо
+<!-- Место для главного скриншота или GIF-записи экрана -->
+<img width="1896" height="980" alt="image" src="https://github.com/user-attachments/assets/7ba3df9c-b304-4702-91e7-e7bdb260ea9f" />
 
-To spin up this template locally, follow these steps:
 
-### Clone
+<details>
+  <summary>Посмотреть еще скриншоты (Admin Panel)</summary>
+  
+  ### Панель управления Payload CMS
+  <img width="1917" height="989" alt="image" src="https://github.com/user-attachments/assets/8adc8cbd-7d34-4948-a2a1-05a315fc4c3b" />
 
-After you click the `Deploy` button above, you'll want to have standalone copy of this repo on your machine. If you've already cloned this repo, skip to [Development](#development).
+</details>
 
-### Development
 
-1. First [clone the repo](#clone) if you have not done so already
-2. `cd my-project && cp .env.example .env` to copy the example environment variables. You'll need to add the `MONGODB_URL` from your Cloud project to your `.env` if you want to use S3 storage and the MongoDB database that was created for you.
+---
 
-3. `pnpm install && pnpm dev` to install dependencies and start the dev server
-4. open `http://localhost:3000` to open the app in your browser
 
-That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
+## ⚡️ Performance (Lighthouse)
 
-#### Docker (Optional)
+Я уделил особое внимание оптимизации, чтобы лэндинг летал:
+- **Mobile:** 96 / 100
+- **Desktop:** 100 / 100
 
-If you prefer to use Docker for local development instead of a local MongoDB instance, the provided docker-compose.yml file can be used.
+<details>
+  <summary>Посмотреть  скриншоты (Lighthouse)</summary>
+  
+  **Mobile:**
+  <img width="1899" height="992" alt="image" src="https://github.com/user-attachments/assets/24bbffe2-b0e1-4a96-8879-babe3e4de32a" />
 
-To do so, follow these steps:
+  **Desktop:**
+  <img width="1919" height="991" alt="image" src="https://github.com/user-attachments/assets/d941ca45-74ee-4076-a7f9-9d7d47ed17bf" />
 
-- Modify the `MONGODB_URL` in your `.env` file to `mongodb://127.0.0.1/<dbname>`
-- Modify the `docker-compose.yml` file's `MONGODB_URL` to match the above `<dbname>`
-- Run `docker-compose up` to start the database, optionally pass `-d` to run in the background.
+</details>
 
-## How it works
+---
 
-The Payload config is tailored specifically to the needs of most websites. It is pre-configured in the following ways:
+## 🛠 Стек технологий
 
-### Collections
+- **Frontend:** Next.js 15 (App Router), Tailwind CSS, TypeScript.
+- **Backend/CMS:** Payload CMS (Headless).
+- **Database:** PostgreSQL.
+- **Auth:** Payload Auth (Cookies).
+- **Deployment:** Vercel.
 
-See the [Collections](https://payloadcms.com/docs/configuration/collections) docs for details on how to extend this functionality.
+---
 
-- #### Users (Authentication)
+## 🌟 Основные фичи
 
-  Users are auth-enabled collections that have access to the admin panel.
+- **Pixel Perfect:** Полное соответствие макету из Figma.
+- **Dynamic Content:** Весь контент (тексты, изображения, блоки) управляется через админку Payload.
+- **Auth System:** Реализована авторизация для доступа к управлению данными.
+- **Responsive:** Полная адаптивность под мобильные устройства и планшеты.
+- **SEO Optimized:** Генерация мета-тегов и быстрая загрузка (Lighthouse 90+).
+- **Telegram Integration:** Реализована воронка захвата лидов. При подписке почта сохраняется в базу Payload CMS и мгновенно дублируется администратору через Telegram Bot API.
 
-  For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/main/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
+---
 
-- #### Media
+## 🔌 Интеграции и автоматизация
 
-  This is the uploads enabled collection. It features pre-configured sizes, focal point and manual resizing to help you manage your pictures.
+- **Payload + Telegram:** 
+- Пользователь вводит email в форму подписки.
+- Данные попадают в коллекцию `Subscribers` (Payload CMS).
+- Срабатывает  хук в коллекции, который отправляет уведомление в Telegram через **Telegram Bot API**.
 
-### Docker
 
-Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
+## ⚙️ Запуск проекта
 
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
+1. Клонируйте репозиторий:
+   ```bash
+   git clone https://github.com/human3862/StartupLand.git
 
-That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
-
-## Questions
-
-If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+2. Установите зависимости:
+    ```bash
+    npm install
+   
+4.  Настройте окружение:
+    Создайте файл .env в корне проекта и добавьте ключи:
+     ```bash
+    DATABASE_URI=your_postgres_uri
+    PAYLOAD_SECRET=your_secret_key
+    TELEGRAM_BOT_TOKEN=your_bot_token
+    TELEGRAM_CHAT_ID=your_chat_id
+6. Запустите проект:
+     ```bash
+    npm run dev
